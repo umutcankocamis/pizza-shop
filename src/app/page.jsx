@@ -1,6 +1,6 @@
 // import components
-import Pizza from "./components/Pizza";
 import Banner from "./components/Banner";
+import Pizza from "./components/Pizza";
 
 // pizza data
 const pizzas = [
@@ -379,6 +379,7 @@ const pizzas = [
 export default function Home() {
   return (
     <section>
+      <Banner />
       <div className="container mx-auto">
         {/* Grid */}
         <div className="grid grid-cols-2 gap-4 md:grid-cols-3 xl:grid-cols-4 xl:gap-7 py-12">

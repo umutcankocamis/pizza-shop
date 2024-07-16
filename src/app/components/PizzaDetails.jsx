@@ -51,14 +51,14 @@ const PizzaDetails = ({ pizza }) => {
         </div>
       </div>
       {/* details */}
-      <div className="bg-pink-100 flex flex-col flex-1">
+      <div className="flex flex-col flex-1">
         <div className="flex-1 p-2 text-center lg:text-left">
-          <div className="flex-1 bg-white overflow-y-scroll h-[46vh] scrollbar-thin scrollbar-thumb-gray-200 scrollbar-track-white pr-2">
+          <div className="flex-1 bg-white overflow-y-scroll h-[50vh] scrollbar-thin scrollbar-thumb-gray-200 scrollbar-track-white pr-2">
             {/* name */}
             <div className="font-semibold">
               <h2 className="capitalize text-3xl mb-1">{pizza.name}</h2>
               {/* size & crust text */}
-              <div className="bg-yellow-200 mb-6 text-lg font-medium">
+              <div className="mb-6 text-lg font-medium">
                 <span>
                   {size === "small"
                     ? "25cm"
@@ -72,15 +72,22 @@ const PizzaDetails = ({ pizza }) => {
               </div>
             </div>
             {/* size selection */}
-            <SizeSelection />
+            <SizeSelection pizza={pizza} size={size} setSize={setSize} />
             {/* size selection */}
-            <CrustSelection />
+            <CrustSelection crust={crust} setCrust={setCrust} />
             {/* toppings */}
-            <div>Choose topping</div>
+            <div className="mb-4 text-xl font-semibold">Choose topping</div>
             {/* topping list */}
-            <div>
+            <div className="flex flex-1 flex-wrap gap-2 py-1 justify-center lg:justify-start">
               {pizza.toppings?.map((topping, index) => {
-                return <Topping key={index} />;
+                return (
+                  <Topping
+                    key={index}
+                    topping={topping}
+                    additionalTopping={additionalTopping}
+                    setAdditionalTopping={setAdditionalTopping}
+                  />
+                );
               })}
             </div>
           </div>

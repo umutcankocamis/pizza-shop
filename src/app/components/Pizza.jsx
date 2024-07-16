@@ -18,19 +18,19 @@ const modalStyles = {
 const Pizza = ({ pizza }) => {
   const [modal, setModal] = useState(false);
   // open modal
-  const openModal = () => {
-    setModal(true);
+  const handleModal = () => {
+    setModal(!modal);
   };
   // close modal
-  const closeModal = () => {
-    setModal(false);
-  };
+  // const closeModal = () => {
+  //   setModal(false);
+  // };
 
   return (
     <div className="group py-2 px-4 xl:py-4 xl:px-2 rounded-xl">
       <Image
-        onClick={openModal}
-        className="lg:group-hover:translate-y-3 lg:group-hover:rotate-45 transition-all duration-500 mb-8"
+        onClick={handleModal}
+        className="lg:group-hover:translate-y-3 lg:group-hover:rotate-45 transition-all duration-500 mb-8 cursor-pointer"
         width={270}
         height={270}
         src={pizza.image}
@@ -38,7 +38,7 @@ const Pizza = ({ pizza }) => {
         priority={1}
       />
       {/* title */}
-      <div onClick={openModal}>
+      <div onClick={handleModal}>
         <div className="text-xl font-bold mb-3 capitalize cursor-pointer">
           {pizza.name}
         </div>
@@ -55,14 +55,14 @@ const Pizza = ({ pizza }) => {
         </div>
         {/* btn hidden-> (sm) - visible(lg) */}
         <button
-          onClick={openModal}
+          onClick={handleModal}
           className="hidden lg:flex gradient text-white rounded-lg btn-sm font-semibold text-sm"
         >
           Choose
         </button>
         {/* btn ->visible (sm) - hidden (lg) */}
         <button
-          onClick={openModal}
+          onClick={handleModal}
           className="btn btn-sm gradient lg:hidden px-3"
         >
           starts at {pizza.priceSm}
@@ -73,13 +73,13 @@ const Pizza = ({ pizza }) => {
         <Modal
           isOpen={modal}
           style={modalStyles}
-          onRequestClose={closeModal}
+          onRequestClose={handleModal}
           contentLabel="Pizza Modal"
           className="bg-white w-full h-full lg:max-w-[900px] lg:max-h-[600px] lg:rounded-[30px] lg:fixed lg:top-[50%] lg:left-[50%] lg:translate-x-[-50%] lg:translate-y-[-50%] outline-none"
         >
           {/* close modal icon */}
           <div
-            onClick={closeModal}
+            onClick={handleModal}
             className="absolute z-30 right-2 top-2 hover:scale-110 duration-200 cursor-pointer"
           >
             <IoCloseOutline className="text-4xl text-orange" />
