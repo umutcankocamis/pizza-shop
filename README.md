@@ -1,3 +1,10 @@
+<div align='center'>
+  <h1>Desktop</h1>
+<img src='https://github.com/user-attachments/assets/bea1a0ba-246c-41a6-b1ab-f8a272919541'/>
+  <h1>Mobile</h1>
+<img src='https://github.com/user-attachments/assets/6fffe692-6433-4aaa-b637-91362f5ae757'/>
+</div>
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
