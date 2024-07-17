@@ -1,17 +1,20 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import SizeSelection from "./SizeSelection";
 import CrustSelection from "./CrustSelection";
 import Topping from "./Topping";
+import { CartContext } from "../context/CartContext";
 
-const PizzaDetails = ({ pizza }) => {
+const PizzaDetails = ({ pizza, setModal }) => {
   const [size, setSize] = useState("small");
   const [crust, setCrust] = useState("traditional");
   const [additionalTopping, setAdditionalTopping] = useState([]);
   const [additionalToppingPrice, setAdditionalToppingPrice] = useState(0);
   const [price, setPrice] = useState(0);
+
+  const { addToCart } = useContext(CartContext);
 
   useEffect(() => {
     size === "small"
@@ -53,7 +56,7 @@ const PizzaDetails = ({ pizza }) => {
       {/* details */}
       <div className="flex flex-col flex-1">
         <div className="flex-1 p-2 text-center lg:text-left">
-          <div className="flex-1 bg-white overflow-y-scroll h-[50vh] scrollbar-thin scrollbar-thumb-gray-200 scrollbar-track-white pr-2">
+          <div className="flex-1 bg-white overflow-y-scroll h-[40vh] lg:h-[56vh] scrollbar-thin scrollbar-thumb-orange scrollbar-track-white pr-2">
             {/* name */}
             <div className="font-semibold">
               <h2 className="capitalize text-3xl mb-1">{pizza.name}</h2>
@@ -94,7 +97,21 @@ const PizzaDetails = ({ pizza }) => {
         </div>
         {/* add to cart btn */}
         <div className="h-full flex items-center px-2 lg:items-end">
-          <button className="btn btn-lg gradient w-full flex justify-center gap-x-2">
+          <button
+            onClick={() => {
+              addToCart(
+                pizza.id,
+                pizza.image,
+                pizza.name,
+                price,
+                additionalTopping,
+                size,
+                crust
+              ),
+                setModal(false);
+            }}
+            className="btn btn-lg gradient w-full flex justify-center gap-x-2"
+          >
             <div>Add to cart for</div>
             <div>$ {price}</div>
           </button>
